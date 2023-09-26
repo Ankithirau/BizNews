@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Tags')
+@section('title', Str::ucfirst($is_page))
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -37,8 +37,15 @@
                     <!-- general form elements -->
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title right">
-                                <a href="{{ route('tags.create') }}" class="btn btn-sm btn-primary mr-3">Create</a>
+                            <div class="row">
+                                <div class="col-sm-11">
+                                    <div class="card-title">
+                                        Tag List
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <a href="{{route('tags.create')}}" class="btn btn-primary">+ Add</a>
+                                </div>
                             </div>
                         </div>
                         <!-- /.card-header -->

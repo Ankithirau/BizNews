@@ -14,8 +14,11 @@ class TagsController extends Controller
      */
     public function index()
     {
+        $is_page = 'tags';
+
         $tags=Tag::all();
-        return view('admin.tags.browse')->with(compact('tags'));
+
+        return view('admin.tags.browse')->with(compact('tags','is_page'));
     }
 
     /**
@@ -23,7 +26,9 @@ class TagsController extends Controller
      */
     public function create()
     {
-        return view('admin.tags.create');
+        $is_page = 'tags';
+
+        return view('admin.tags.create')->with(compact('is_page'));
     }
 
     /**

@@ -47,9 +47,6 @@
                                     <a href="{{route('subcategory.create')}}" class="btn btn-primary">+ Add</a>
                                 </div>
                             </div>
-                            <div class="card-title right">
-
-                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">

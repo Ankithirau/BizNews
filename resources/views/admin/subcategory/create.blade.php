@@ -46,7 +46,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
                                     <input type="text" name="subcategory_name" class="form-control"
-                                        id="exampleInputEmail1" placeholder="Enter Category name">
+                                        id="exampleInputEmail1" placeholder="Enter Category name" value="{{old('subcategory_name')}}">
                                 </div>
                                 @error('subcategory_name')
                                     <div class="text-danger">
@@ -58,7 +58,7 @@
                                     <select class="custom-select" name="category_id">
                                         <option value="" selected>Select Category</option>
                                         @foreach ($category as $item)
-                                            <option value="{{$item->id}}">{{$item->category_name}}</option>
+                                            <option value="{{$item->id}}" @selected(old('category_id')==$item->id)>{{$item->category_name}}</option>
                                         @endforeach
                                     </select>
                                 @error('category_id')

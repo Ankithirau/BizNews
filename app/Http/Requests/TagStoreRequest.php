@@ -25,4 +25,11 @@ class TagStoreRequest extends FormRequest
             'tags' => 'required|string|max:50|min:4',
         ];
     }
+    
+    public function messages()
+    {
+        return [
+            'tags.required' => 'name is required.'
+        ];
+    }
 }

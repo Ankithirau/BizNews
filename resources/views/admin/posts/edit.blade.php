@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Post')
+@section('title', Str::ucfirst($is_page))
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -23,6 +23,12 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+            <div class="row mb-3">
+                <div class="col-sm-11"></div>
+                <div class="col-sm-1">
+                    <a href="{{route('posts.index')}}" class="btn btn-primary">Back</a>
+                </div>
+            </div>
             <!-- Small boxes (Stat box) -->
             @if (session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
@@ -34,7 +40,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <!-- general form elements -->
-                    <div class="card card-primary">
+                    <div class="card card-secondary">
                         <div class="card-header">
                             <h3 class="card-title">Edit Post</h3>
                         </div>
@@ -118,7 +124,7 @@
                                     <label>Tags</label>
                                     <select class="form-control select2bs4" style="width: 100%;" multiple="multiple" data-placeholder="Select a State" name="tags[]">
                                         @foreach ($tags as $item)
-                                            <option value="{{$item->id}}">{{$item->tags}}</option>
+                                            <option value="{{$item->id}}" selected>{{$item->tags}}</option>
                                         @endforeach
                                       </select>
                                 </div>

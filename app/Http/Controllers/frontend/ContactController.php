@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Http\Controllers\Controller;
+use App\Mail\ContactMail;
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -17,15 +19,17 @@ class ContactController extends Controller
     {
         $request->except('token','method');
 
-        try {
-            $requestdata = $request->validate([
-                'name' => ['required', 'string', 'max:40'],
-                'email' => ['required', 'email', 'unique:contact_us'],
-                'subject' => ['required', 'string', 'max:100'],
-                'message' => ['required', 'string', 'max:250'],
-            ]);
+        $requestdata = $request->validate([
+            'name' => ['required', 'string', 'max:40'],
+            'email' => ['required', 'email', 'unique:contact_us'],
+            'subject' => ['required', 'string', 'max:100'],
+            'message' => ['required', 'string', 'max:250'],
+        ]);
 
+        try {
             $data=ContactUs::create($requestdata);
+
+            Mail::to($requestdata['email'])->send(new ContactMail($requestdata));
 
             $status='success';
 
@@ -35,7 +39,7 @@ class ContactController extends Controller
 
             $status='error';
 
-            $message='Something went wrong! Please try again';
+            $message='Something went wrong! Please try again'.$th->getMessage();
         }
 
         return redirect()->route('contact.index')->with($status,$message);

@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
                                     <input type="text" name="category_name" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter Category name">
+                                        placeholder="Enter Category name" value="{{old('category_name')}}">
                                 </div>
                                 @error('category_name')
                                     <div class="text-danger">

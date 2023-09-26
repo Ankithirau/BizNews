@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Post')
+@section('title', Str::ucfirst($is_page))
 
 @section('content')
 <!-- Content Header (Page header) -->
@@ -46,7 +46,7 @@
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" name="title" class="form-control" id="title"
-                                    placeholder="Enter title">
+                                    placeholder="Enter title" value="{{old('title')}}">
                             </div>
                             @error('title')
                             <div class="text-danger">
@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label for="short_desc">Short Description</label>
                                 <textarea class="form-control" name="short_desc" rows="3" placeholder="Enter ..."
-                                    id="short_desc"></textarea>
+                                    id="short_desc">{{old('short_desc')}}</textarea>
                             </div>
                             @error('short_desc')
                             <div class="text-danger">
@@ -69,7 +69,7 @@
                                     data-url="{{route('category.relative')}}">
                                     <option value="" selected>Select Category</option>
                                     @foreach ($categories as $item)
-                                    <option value="{{ $item->id }}">{{ $item->category_name }}</option>
+                                    <option value="{{ $item->id }}" @selected(old('short_desc')==$item->id)>{{ $item->category_name }}</option>
                                     @endforeach
                                 </select>
                                 @error('category_id')
@@ -104,7 +104,7 @@
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Description</label>
-                                <textarea id="summernote" name="desc" rows="10"></textarea>
+                                <textarea id="summernote" name="desc" rows="10">{{old('desc')}}</textarea>
                             </div>
                             @error('desc')
                             <div class="text-danger">

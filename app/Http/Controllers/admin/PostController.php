@@ -45,7 +45,9 @@ class PostController extends Controller
 
         $categories = Category::orderBy('id', 'desc')->get();
 
-        return view('admin.posts.edit')->with(compact('post','subcategories', 'categories','tags'));
+        $is_page = 'post';
+
+        return view('admin.posts.edit')->with(compact('post','subcategories', 'categories','tags','is_page'));
     }
 
     public function store(StorePostRequest $request)

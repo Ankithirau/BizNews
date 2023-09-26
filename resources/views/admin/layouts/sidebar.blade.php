@@ -71,8 +71,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item {{!empty($is_page) && in_array($is_page,['post','tag']) ?'menu-open':''}}">
-                    <a href="javascript:void" class="nav-link {{!empty($is_page) && in_array($is_page,['post','tag']) ?'active':''}}">
+                <li class="nav-item {{!empty($is_page) && in_array($is_page,['post','tags']) ?'menu-open':''}}">
+                    <a href="javascript:void" class="nav-link {{!empty($is_page) && in_array($is_page,['post','tags']) ?'active':''}}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                            Manage Post
@@ -81,7 +81,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('posts.index')}}" class="nav-link {{!empty($is_page) && in_array($is_page,['post','tag']) ?'active':''}}">
+                            <a href="{{route('posts.index')}}" class="nav-link {{!empty($is_page) && in_array($is_page,['post']) ?'active':''}}">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Post
@@ -89,7 +89,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('tags.index')}}" class="nav-link">
+                            <a href="{{route('tags.index')}}" class="nav-link {{!empty($is_page) && in_array($is_page,['tags']) ? 'active':''}}">
                                 <i class="nav-icon fas fa-tag"></i>
                                 <p>
                                     Tags
@@ -122,7 +122,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{!empty($is_page) && in_array($is_page,['users','tags']) ?'menu-open':''}}">
                     <a href="javascript:void" class="nav-link {{!empty($is_page) && $is_page=='users'?'active':''}}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
@@ -132,7 +132,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('users.index')}}" class="nav-link">
+                            <a href="{{route('users.index')}}" class="nav-link {{!empty($is_page) && $is_page=='users'?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>User</p>
                             </a>
